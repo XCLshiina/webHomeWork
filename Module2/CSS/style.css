@@ -30,7 +30,9 @@ p{
   font-size: larger;
 }
 
-
+a{
+  text-decoration: none;
+}
 nav{
   display: inline-block;
   width: 80%;
