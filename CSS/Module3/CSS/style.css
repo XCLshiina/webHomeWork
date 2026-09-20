@@ -1,3 +1,18 @@
+.skip-link{
+  position: fixed;
+  top: -1000px;
+  left: 100px;
+  background: black;
+  padding: 10px 15px;
+  color: white;
+  z-index: 1000;
+  text-decoration: none;
+}
+.skip-link:focus{
+  top: 10px;
+}
+
+
 body{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 150%;
@@ -37,8 +52,20 @@ nav{
   display: inline-block;
   width: 80%;
 }
-nav img{
+
+/* Module3 */
+nav{
+  width: 300px;
+}
+a[href$=".html"] {
+  border: 3px dashed gray;
+  border-radius: 10%;
+  margin: 10px 10px 8px 14px;
+}
+nav img {
   width: 10%;
+  position: relative;
+  top: 10px;
 }
 .grid{
   display:grid;
@@ -54,4 +81,19 @@ nav img{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+img{
+  transition: transform 0.3s linear, box-shadow 0.3s ease;
+}
+img:hover{
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+.flex img:nth-child(odd),
+.grid img:nth-child(odd) {
+  border-radius: 15px;
+}
+.flex img:nth-child(even),
+.grid img:nth-child(even) {
+  border-radius: 50%;
 }
