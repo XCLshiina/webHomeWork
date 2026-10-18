@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery - Responsive</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Khung hiển thị chính ở trên */
+        #image {
+            width: 80%;
+            max-width: 500px;
+            height: 300px;
+            border: 3px solid #333;
+            margin: 0 auto 30px auto;
+            background-color: #e9e9e9;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #555;
+            font-weight: bold;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        /* Khu vực chứa các ảnh nhỏ */
+        .preview-box {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Thẻ ảnh nhỏ mặc định */
+        .preview-box img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+
+        .preview-box img:hover,
+        .preview-box img:focus {
+            border-color: #007bff;
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        /* ==========================================================
+           MEDIA QUERIES (Yêu cầu responsive)
+           ========================================================== */
+
+        /* 1. Tablet View (Kích hoạt từ 772px trở lên) */
+        @media screen and (min-width: 772px) {
+            div {
+                width: 45%;
+                display: inline-block;
+                box-sizing: border-box;
+            }
+            
+            /* Giới hạn chiều cao ảnh không quá 30% viewport height */
+            .preview-box img {
+                max-height: 30vh;
+                height: auto;
+            }
+        }
+
+        /* 2. Large Screen View (Kích hoạt từ 998px trở lên) */
+        @media screen and (min-width: 998px) {
+            div {
+                width: 30%;
+            }
+        }
+    </style>
+</head>
+<body onload="addTabIndex()">
+
+    <!-- Khung chính hiển thị ảnh phóng to và chữ -->
+    <div id="image">
+        Hover over or tab through an image below to display here.
+    </div>
+
+    <!-- 6 ảnh nhỏ bên dưới có gắn đầy đủ sự kiện chuột và bàn phím -->
+    <div class="preview-box">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 1: Chú mèo đáng yêu." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 2: Khoảnh khắc thư giãn." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 3: Góc nhìn nghệ thuật." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 4: Chú mèo đang ngủ gật." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 5: Đôi mắt hướng về phía trước." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 6: Chú mèo năng động." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+    </div>
+
+    <!-- Phần mã JavaScript xử lý logic -->
+    <script>
+        // Hàm chạy khi di chuột vào hoặc focus vào ảnh
+        function upDate(previewPic) {
+            console.log("Sự kiện kích hoạt trên ảnh:", previewPic.alt);
+            document.getElementById('image').innerHTML = previewPic.alt;
+            document.getElementById('image').style.backgroundImage = "url('" + previewPic.src + "')";
+        }
+
+        // Hàm chạy khi rời chuột hoặc blur khỏi ảnh (trả về trạng thái ban đầu)
+        function undo() {
+            console.log("Rời khỏi ảnh, trả về trạng thái cũ.");
+            document.getElementById('image').style.backgroundImage = "url('')";
+            document.getElementById('image').innerHTML = "Hover over or tab through an image below to display here.";
+        }
+
+        // Hàm chạy khi trang web vừa tải xong để tự động thêm tabindex cho các ảnh
+        function addTabIndex() {
+            console.log("Trang đã tải xong! Đang thêm tabindex cho các ảnh...");
+            const images = document.querySelectorAll('.preview-box img');
+            for (let i = 0; i < images.length; i++) {
+                images[i].setAttribute('tabindex', '0');
+                console.log("Đã thêm tabindex cho ảnh số " + (i + 1));
+            }
+        }
+    </script>
+
+</body>
+</html>
