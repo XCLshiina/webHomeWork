@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery - Accessibility</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 40px;
+        }
+        #image {
+            width: 500px;
+            height: 300px;
+            border: 3px solid #333;
+            margin: 0 auto 30px auto;
+            background-color: #e9e9e9;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #555;
+            font-weight: bold;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .preview-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .preview-box img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+        .preview-box img:hover,
+        .preview-box img:focus {
+            border-color: #007bff;
+            transform: scale(1.05);
+            outline: none; 
+        }
+    </style>
+</head>
+<body onload="addTabIndex()">
+
+    <div id="image">
+        Hover over or tab through an image below to display here.
+    </div>
+
+    <div class="preview-box">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 1: Chú mèo đáng yêu số một." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 2: Khoảnh khắc thư giãn nhẹ nhàng." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 3: Góc nhìn nghệ thuật độc đáo." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 4: Chú mèo đang ngủ gật." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 5: Đôi mắt long lanh hướng về phía trước." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+        <img src="./images/cat1.jpg" alt="Mô tả bức ảnh số 6: Chú mèo năng động và tinh nghịch." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+    </div>
+
+    <script>
+        function upDate(previewPic) {
+            console.log("Sự kiện kích hoạt trên ảnh:", previewPic.alt);
+
+            document.getElementById('image').innerHTML = previewPic.alt;
+
+            document.getElementById('image').style.backgroundImage = "url('" + previewPic.src + "')";
+        }
+
+        function undo() {
+            console.log("Rời khỏi ảnh, trả về trạng thái cũ.");
+            document.getElementById('image').style.backgroundImage = "url('')";
+            document.getElementById('image').innerHTML = "Hover over or tab through an image below to display here.";
+        }
+
+        function addTabIndex() {
+            console.log("Trang đã tải xong! Đang thêm tabindex cho các ảnh...");
+
+            const images = document.querySelectorAll('.preview-box img');
+
+            for (let i = 0; i < images.length; i++) {
+                images[i].setAttribute('tabindex', '0');
+                console.log("Đã thêm tabindex cho ảnh số " + (i + 1));
+            }
+        }
+    </script>
+
+</body>
+</html>
