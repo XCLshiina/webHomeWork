@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Interactive Photo Gallery - Final Project</title>
+    <!-- Liên kết đến file CSS -->
+    <link rel="stylesheet" href="bt3.css">
+</head>
+<body onload="addTabIndex()">
+
+    <!-- Khung hiển thị ảnh lớn (Main Image) -->
+    <div id="image">
+        Hover over or tab through an image below to display here.
+    </div>
+
+    <!-- Khu vực chứa lưới ảnh (Gallery Grid) -->
+    <div class="container">
+        <figure>
+            <img src="../images/ca1.jpg" alt="Phong cảnh thiên nhiên hùng vĩ với núi non và bầu trời trong xanh." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+            <figcaption>Ảnh 1</figcaption>
+        </figure>
+        <figure>
+            <img src="../images/cat2.jpg" alt="Thành phố về đêm lung linh ánh đèn rực rỡ sắc màu." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+            <figcaption>Ảnh 2</figcaption>
+        </figure>
+        <figure>
+            <img src="../images/cat3.jpg" alt="Bãi biển cát trắng nắng vàng rực rỡ sóng vỗ rì rào." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+            <figcaption>Ảnh 3</figcaption>
+        </figure>
+        <figure>
+            <img src="../images/green.jpg" alt="Ngọn núi cao phủ đầy tuyết trắng xóa dưới ánh nắng." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+            <figcaption>Ảnh 4</figcaption>
+        </figure>
+        <figure>
+            <img src="../images/red.jpg" alt="Khu rừng mùa thu với những chiếc lá phong đỏ vàng rơi." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+            <figcaption>Ảnh 5</figcaption>
+        </figure>
+        <figure>
+            <img src="../images/blue.jpg" alt="Cánh đồng hoa rực rỡ sắc màu nở rộ dưới ánh mặt trời." onmouseover="upDate(this)" onmouseleave="undo()" onfocus="upDate(this)" onblur="undo()">
+            <figcaption>Ảnh 6</figcaption>
+        </figure>
+    </div>
+
+    <!-- Liên kết đến file JavaScript -->
+    <script src="bt3.js"></script>
+</body>
+</html>
